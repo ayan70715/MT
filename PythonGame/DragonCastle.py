@@ -96,13 +96,13 @@ class Player:
                 return self.move('backward')
             elif action == "confront":
                 while True:
-                    print(f"\n         You : [HP : {self.health}]  [Attack : {self.attack_power}]     Enemy : [HP : {enemy.health}]  [Attack : {enemy.damage}]")
-                    action = input("         Attack RunAway\n> ").strip().lower()
+                    print(f"\n\tYou : [HP : {self.health}]  [Attack : {self.attack_power}]     Enemy : [HP : {enemy.health}]  [Attack : {enemy.damage}]")
+                    action = input("\tAttack RunAway\n> ").strip().lower()
                     if action == "runaway":
                         return self.move('backward')
                     elif action == "attack":
                         enemy.take_damage(self.attack_power)
-                        print(f"        Enemy -{self.attack_power}!!!")
+                        print(f"\tEnemy -{self.attack_power}!!!")
                         enemy_damage = enemy.attack()
                         self.health -= enemy_damage
                         if self.health <= 0:
@@ -110,10 +110,10 @@ class Player:
                             self.current_room.enemy = []
                             return
                         if enemy.health <= 0:
-                            print(f"        You defeated {enemy.name}!")
+                            print(f"\tYou defeated {enemy.name}!")
                             self.current_room.enemy.pop()
                             return
-                        print(f"        You -{enemy_damage}!!!")
+                        print(f"\tYou -{enemy_damage}!!!")
                     else:
                         print("Invalid action.")
             else:
