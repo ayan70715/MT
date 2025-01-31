@@ -70,8 +70,7 @@ class Player:
         print(f"You move {direction} and arrive at {self.current_room.name}.")
         
         while len(self.current_room.enemy):
-            if(self.battle_mode()==-555555):
-                return
+            self.battle_mode()
 
     def set_enemy(self,room):
         enemy_names = ['Minion','Goblin','Bandit','Giant','Dragon']
@@ -108,7 +107,8 @@ class Player:
                         self.health -= enemy_damage
                         if self.health <= 0:
                             print("Game Over! You have been defeated.")
-                            return -555555
+                            self.current_room.enemy = []
+                            return
                         if enemy.health <= 0:
                             print(f"        You defeated {enemy.name}!")
                             self.current_room.enemy.pop()
