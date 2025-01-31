@@ -222,16 +222,6 @@ class Player:
 def refresh(player):
     os.system('cls')
     print("============================ Adventure Game ============================")
-    world = world = f'''        
-                        [ First-Aid Room {'∇ ' if player.current_room.name=='First-Aid Room' else ''}]
-                                │
-                                │
-            [ Storage {'∇ ' if player.current_room.name=='Storage' else ''}] ─── [ Kitchen {'∇ ' if player.current_room.name=='Kitchen' else ''}] ─── [ Dungeon {'∇ ' if player.current_room.name=='Dungeon' else ''}]
-                                │
-                                │
-                            [ Hall {'∇ ' if player.current_room.name=='Hall' else ''}]          
-'''
-    print('\n',world)
     print("\n\n")
     
 def create_world():
