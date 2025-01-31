@@ -51,6 +51,7 @@ class Player:
     def move(self, direction):
         if direction == 'backward':
             if len(self.path):
+                print("You retreat to the previous room.")
                 self.current_room = self.path.pop()
                 self.set_room(direction)
             else:
@@ -78,7 +79,7 @@ class Player:
         enemy_number,enemy_hp,enemy_attack = 0,0,0
         enemy_name = ''
         if(put_enemy):
-            enemy_number = random.randint(0,5)
+            enemy_number = random.randint(0,3)
             for i in range(enemy_number):
                 enemy_name = enemy_names[random.randint(0,4)]
                 for j in range(5):
@@ -93,14 +94,12 @@ class Player:
             print(f"\n\t{enemy.name} appeared!!!!!")
             action = input("\tConfront GoBack\n> ").strip().lower()
             if action == "goback":
-                print("You retreat to the previous room.")
                 return self.move('backward')
             elif action == "confront":
                 while True:
                     print(f"\n         You : [HP : {self.health}]  [Attack : {self.attack_power}]     Enemy : [HP : {enemy.health}]  [Attack : {enemy.damage}]")
                     action = input("         Attack RunAway\n> ").strip().lower()
                     if action == "runaway":
-                        print("You escaped the battle!")
                         return self.move('backward')
                     elif action == "attack":
                         enemy.take_damage(self.attack_power)
